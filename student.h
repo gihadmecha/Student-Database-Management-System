@@ -2,7 +2,7 @@
 #include "stdTypes.h"
 #include "person.h"
 #include <stdio.h>
-#include "string.h"
+
 
 typedef struct {
     char name[10];

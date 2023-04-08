@@ -12,6 +12,11 @@ typedef struct{
     s32 maxGrade;
 } maxGrade;
 
+typedef struct {
+    char ack;
+    u32 index;
+} index;
+
 int school_addStudent ();
 int school_shiftDown ();
 int school_insertStudent ();
@@ -20,3 +25,5 @@ int school_printStudent ();
 void school_deleteStudent ();
 maxGrade school_getMaxGrade ();
 int school_printStudent2 (u32 ID);
+index school_searchStudentByName ();
+void school_printSearchedStudent ();

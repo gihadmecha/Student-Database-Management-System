@@ -93,3 +93,4 @@ void student_scan ( student* student)
     scanf ("%d", &student->mother.ID); 
 }
 
+

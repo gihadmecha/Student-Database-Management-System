@@ -125,3 +125,37 @@ int school_printStudent2 (u32 ID)
     return 0;
 }
 
+index school_searchStudentByName ()
+{
+    char name[10];
+    printf ("student's Name: ");
+    string_scan (name);
+
+    index requiredStudentIndex = {0, 0};
+
+    for (u32 index = 0; index < schoolIndex; index++)
+    {
+        if (string_compare1 (school[index].name, name) == STRING_EQUAL)
+        {
+            requiredStudentIndex.ack = 1;
+            requiredStudentIndex.index = index; 
+            return requiredStudentIndex;
+        }
+    }
+
+    return requiredStudentIndex;
+}
+
+void school_printSearchedStudent ()
+{
+    index index = school_searchStudentByName ();
+
+    if (index.ack)
+    {
+        student_Print1(school[index.index]);
+    }
+    else 
+    {
+        printf ("Not Exist !!\n\n");
+    }
+}

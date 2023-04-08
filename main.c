@@ -32,8 +32,9 @@ int main ()
         switch(choice)
         {
             case 1:
+            school_printSearchedStudent ();
             break;
-
+            
             case 2:
             if (school_printStudent () == 0)
             {
