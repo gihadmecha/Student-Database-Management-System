@@ -38,3 +38,5 @@ int school_editStudentByName ();
 int school_editStudentByID ();
 int school_callStudentByID ();
 int school_callStudentByName ();
+void school_storeData ();
+void school_initialize ();

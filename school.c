@@ -2,6 +2,7 @@
 #include "school.h"
 
 
+
 int school_addStudent ()
 {
     if (schoolIndex < SCHOOL_SIZE)
@@ -10,7 +11,7 @@ int school_addStudent ()
         scanf ("%c", &garbage);
         student_scan ( school + schoolIndex);
         schoolIndex++;
-
+        
         return 1;
     }
     
@@ -347,4 +348,28 @@ int school_callStudentByName ()
     return 0;
 }
 
+void school_storeData ()
+{
+    FILE * fp;
 
+    fp = fopen ("studentDatabase.txt", "w");
+    fprintf(fp, "%d\n", schoolIndex);
+    for (u32 index = 0; index < schoolIndex; index++)
+    {
+        fprintf(fp, "%s %s %d %d %s %s %d %s %s %d\n", school[index].name, school[index].mobile, school[index].age, school[index].grade, school[index].father.name, school[index].father.mobile, school[index].father.ID, school[index].mother.name, school[index].father.mobile, school[index].mother.ID);
+    }
+    fclose(fp);
+}
+
+void school_initialize ()
+{
+    FILE * fp;
+
+    fp = fopen ("studentDatabase.txt", "r");
+    fscanf(fp, "%d", &schoolIndex);
+    for (u32 index = 0; index < schoolIndex; index++)
+    {
+        fscanf(fp, "%s %s %d %d %s %s %d %s %s %d", &school[index].name, &school[index].mobile, &school[index].age, &school[index].grade, &school[index].father.name, &school[index].father.mobile, &school[index].father.ID, &school[index].mother.name, &school[index].father.mobile, &school[index].mother.ID);
+    }
+    fclose(fp);
+}

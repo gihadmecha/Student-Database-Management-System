@@ -69,6 +69,7 @@ void student_print2Array (student* studentArray, u32 studentArraySize)
     }
 }
 
+
 void student_scan ( student* student)
 {
     char garbage;

@@ -7,6 +7,8 @@ int main ()
 {
     u8 choice;
     maxGrade maxGrade;
+
+    school_initialize ();
     
     while (1)
     {
@@ -120,6 +122,7 @@ int main ()
             break;
 
             case 14:
+            school_storeData ();
             return 0;
             break;
 
