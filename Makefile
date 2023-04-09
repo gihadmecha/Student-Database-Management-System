@@ -4,7 +4,7 @@ exeFileRm = main.exe
 
 
 all:
-	gcc -o $(exeFile) string.h string.c person.h person.c student.h student.c school.h school.c $(sourceFile)
+	gcc -o $(exeFile) string.h string.c person.h person.c student.h student.c school.h school.c conio.h conio.c $(sourceFile)
 	./$(exeFile) 
 	del $(exeFileRm)
 

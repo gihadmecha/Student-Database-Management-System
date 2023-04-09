@@ -260,8 +260,25 @@ int school_editStudentByID ()
     return 0;
 }
 
+COORD GetConsoleCursorPosition(HANDLE hConsoleOutput)
+{
+    CONSOLE_SCREEN_BUFFER_INFO cbsi;
+    if (GetConsoleScreenBufferInfo(hConsoleOutput, &cbsi))
+    {
+        return cbsi.dwCursorPosition;
+    }
+    else
+    {
+        // The function failed. Call GetLastError() for details.
+        COORD invalid = { 0, 0 };
+        return invalid;
+    }
+}
+
 int school_callStudentByID ()
 {
+    int x;
+    int y;
     u32 ID;
     printf ("Student's ID: ");
     scanf ("%d", &ID);
@@ -269,7 +286,25 @@ int school_callStudentByID ()
     if (ID < schoolIndex)
     {
         string_print2 (school[ID].mobile);
-        printf ("...");
+
+        x = c_wherex();
+        y = c_wherey();
+        for (u32 index = 0; index < 5; index++)
+        {
+            printf (" ");
+            _sleep (500);
+            printf (".");
+            _sleep (500);
+            printf (".");
+            _sleep (500);
+            printf (".");
+            _sleep (500);
+            c_gotoxy(x, y);
+            printf ("    ");
+            _sleep (500);
+            c_gotoxy(x, y);
+        }
+        
         printf("\n");
         return 1;
     }
@@ -279,12 +314,31 @@ int school_callStudentByID ()
 
 int school_callStudentByName ()
 {
+    int x;
+    int y;
     index requiredIndex = school_searchStudentByName ();
 
     if (requiredIndex.ack)
     {
         string_print2 (school[requiredIndex.index].mobile);
-        printf ("...");
+
+        x = c_wherex();
+        y = c_wherey();
+        for (u32 index = 0; index < 5; index++)
+        {
+            printf (" ");
+            _sleep (500);
+            printf (".");
+            _sleep (500);
+            printf (".");
+            _sleep (500);
+            printf (".");
+            _sleep (500);
+            c_gotoxy(x, y);
+            printf ("    ");
+            _sleep (500);
+            c_gotoxy(x, y);
+        }
         printf ("\n");
 
         return 1;

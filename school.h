@@ -1,5 +1,9 @@
 
 #include "student.h"
+#include <time.h>
+#include <windows.h>
+#include <conio.h>
+
 
 #define SCHOOL_SIZE 3
 
