@@ -6,6 +6,8 @@ int school_addStudent ()
 {
     if (schoolIndex < SCHOOL_SIZE)
     {
+        char garbage;
+        scanf ("%c", &garbage);
         student_scan ( school + schoolIndex);
         schoolIndex++;
 
@@ -45,6 +47,8 @@ int school_insertStudent ()
         if (ID < SCHOOL_SIZE)
         {
             school_shiftDown (ID);
+            char garbage;
+            scanf ("%c", &garbage);
             student_scan (school + ID);
             return 1;
         }
@@ -129,7 +133,9 @@ index school_searchStudentByName ()
 {
     char name[10];
     printf ("student's Name: ");
-    string_scan (name);
+    char garbage;
+    scanf ("%c", &garbage);
+    string_scan (name, 10);
 
     index requiredStudentIndex = {0, 0};
 
@@ -159,3 +165,132 @@ void school_printSearchedStudent ()
         printf ("Not Exist !!\n\n");
     }
 }
+
+void school_sortAlphabetically_selectionSort ()
+{
+    student studentWithBiggestName;
+    u32 studentWithBiggestNameID;
+    for (u32 loopNumber = 0; loopNumber < schoolIndex; loopNumber++)
+    {
+        studentWithBiggestName = school[0];
+        studentWithBiggestNameID = 0;
+        for (u32 index = 0; index < schoolIndex - loopNumber; index++)
+        {
+            if ( string_compare2 (studentWithBiggestName.name, school[index].name) == STRING_SMALLER)
+            {
+                studentWithBiggestName = school[index];
+                studentWithBiggestNameID = index;
+            }
+        }
+
+        student_swap (school + studentWithBiggestNameID, school + schoolIndex - 1 - loopNumber);
+    }
+}
+
+void school_sortAccordingGrades_selectionSort ()
+{
+    student studentWithGreatestGrade;
+    u32 studentWithGreatestGradeID;
+    for (u32 loopNumber = 0; loopNumber < schoolIndex; loopNumber++)
+    {
+        studentWithGreatestGrade = school[0];
+        studentWithGreatestGradeID = 0;
+        for (u32 index = 0; index < schoolIndex - loopNumber; index++)
+        {
+            if (studentWithGreatestGrade.grade < school[index].grade)
+            {
+                studentWithGreatestGrade.grade = school[index].grade;
+                studentWithGreatestGradeID = index;
+            }
+        }
+        student_swap (school + studentWithGreatestGradeID, school + schoolIndex - 1 - loopNumber);
+    }
+}
+
+void school_sortAccordingGrades_bubbleSort ()
+{
+    int sortFlag;
+    u32 loopNumber = 0;
+
+    do
+    {
+        sortFlag = 0;
+        for (u32 index = 0; index < schoolIndex - 1 - loopNumber; index++)
+        {
+            if (school[index].grade > school[index + 1].grade)
+            {
+                student_swap ( school + index, school + (index + 1) );
+                sortFlag = 1;
+            }
+        }
+
+        loopNumber++;
+
+    }while (sortFlag == 1);
+}
+
+int school_editStudentByName ()
+{
+    index index = school_searchStudentByName ();
+    if (index.ack)
+    {
+        student_scan (school + index.index);
+    }
+    
+    return index.ack;
+}
+
+int school_editStudentByID ()
+{
+    u32 ID;
+    printf ("Student' ID: ");
+    scanf ("%d", &ID);
+    if (ID < SCHOOL_SIZE)
+    {
+        if (ID > schoolIndex)
+            schoolIndex = ID + 1;
+
+        char garbage;
+        scanf ("%c", &garbage);
+        student_scan (school + ID);
+
+        return 1;
+    }
+
+    return 0;
+}
+
+int school_callStudentByID ()
+{
+    u32 ID;
+    printf ("Student's ID: ");
+    scanf ("%d", &ID);
+
+    if (ID < schoolIndex)
+    {
+        string_print2 (school[ID].mobile);
+        printf ("...");
+        printf("\n");
+        return 1;
+    }
+
+    return 0;
+}
+
+int school_callStudentByName ()
+{
+    index requiredIndex = school_searchStudentByName ();
+
+    if (requiredIndex.ack)
+    {
+        string_print2 (school[requiredIndex.index].mobile);
+        printf ("...");
+        printf ("\n");
+
+        return 1;
+    } 
+
+    return 0;
+}
+
+

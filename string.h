@@ -11,6 +11,7 @@ typedef enum {
 } STRING_COMPARE;
 
 void string_print (char* string);
-void string_scan (char* string);
+void string_print2 (char* string);
+void string_scan (char* string, u32 maxStringSize);
 STRING_COMPARE string_compare1 ( char* string1, char* string2);
 STRING_COMPARE string_compare2 ( char* string1, char* string2);

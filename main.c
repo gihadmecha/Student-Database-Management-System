@@ -26,7 +26,7 @@ int main ()
         printf ("13.get the greatest grade\n");
         printf ("14.Exist !!\n\n");
 
-        printf ("choice number:");
+        printf ("choice number: ");
         scanf ("%d", &choice);
         printf ("\n");
         switch(choice)
@@ -43,15 +43,31 @@ int main ()
             break;
 
             case 3:
+            if (school_editStudentByName () == 0)
+            {
+                printf ("Student is Not Exist !!\n");
+            }
             break;
 
             case 4:
+            if (school_editStudentByID () == 0)
+            {
+                printf ("Student is Not Exist !!\n");
+            }
             break;
 
             case 5:
+            if (school_callStudentByName () == 0)
+            {
+                printf ("Student is Not Exist !!\n");
+            }
             break;
 
             case 6:
+            if (school_callStudentByID () == 0)
+            {
+                printf ("Student is Not Exist !!\n");
+            }
             break;
 
             case 7:
@@ -79,9 +95,11 @@ int main ()
             break;
 
             case 11:
+            school_sortAlphabetically_selectionSort ();
             break;
 
             case 12:
+            school_sortAccordingGrades_selectionSort ();
             break;
 
             case 13:

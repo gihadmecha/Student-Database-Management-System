@@ -6,7 +6,7 @@
 
 typedef struct {
     char name[10];
-    char mobile[12];
+    char mobile[13];
     u8  age;
     s32 grade;
     person father;
@@ -18,3 +18,4 @@ void student_print1Array (student* studentArray, u32 studentArraySize);
 void student_Print2 (student* student);
 void student_print2Array (student* studentArray, u32 studentArraySize);
 void student_scan ( student* student);
+void student_swap (student* pstudent1, student* pstudent2);

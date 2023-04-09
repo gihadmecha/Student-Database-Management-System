@@ -71,26 +71,36 @@ void student_print2Array (student* studentArray, u32 studentArraySize)
 
 void student_scan ( student* student)
 {
+    char garbage;
+    //scanf ("%c", &garbage);
     printf ("Name: ");
-    string_scan (student->name);
+    string_scan (student->name, 10);
     printf ("mobile: ");
-    string_scan (student->mobile);
+    string_scan (student->mobile, 13);
     printf ("age: ");
     scanf ("%d", &student->age);
     printf ("grade: ");
     scanf ("%d", &student->grade);
     printf ("father's Name: ");
-    string_scan (student->father.name);
+    scanf ("%c", &garbage);
+    string_scan (student->father.name, 10);
     printf ("father's mobile: ");
-    string_scan (student->father.mobile);
+    string_scan (student->father.mobile, 13);
     printf ("father's ID: ");
     scanf ("%d", &student->father.ID);
     printf ("mother's Name: "); 
-    string_scan (student->mother.name);
+    scanf ("%c", &garbage);
+    string_scan (student->mother.name, 10);
     printf ("mother's mobile: ");
-    string_scan (student->mother.mobile);
+    string_scan (student->mother.mobile, 13);
     printf ("mother's ID: ");
     scanf ("%d", &student->mother.ID); 
 }
 
+void student_swap (student* pstudent1, student* pstudent2)
+{
+    student temp = *pstudent1;
+    *pstudent1 = *pstudent2;
+    *pstudent2 = temp;
+}
 

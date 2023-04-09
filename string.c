@@ -10,16 +10,27 @@ void string_print (char* string)
     printf ("\n");
 }
 
-void string_scan (char* string)
+void string_print2 (char* string)
 {
-    scanf ("%c", string);
-    u32 index = -1;
-    do 
+    for (u32 index = 0; string[index]; index++)
     {
-        index++;
+        printf ("%c", string[index]);
+    }
+}
+
+void string_scan (char* string, u32 maxStringSize)
+{
+    if (maxStringSize >= 1)
+    {
+        u32 index = 0;
         scanf ("%c", string + index);
-    } while (string[index] != '\n');
-    string[index] = 0;
+        index++;
+        for (       ; string[index-1] != '\n' && index < maxStringSize - 1; index++)
+        {
+            scanf ("%c", string + index);
+        } 
+        string[index-1] = 0;
+    }
 }
 
 STRING_COMPARE string_compare1 ( char* string1, char* string2)
