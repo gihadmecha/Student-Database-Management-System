@@ -2,7 +2,7 @@
 
 Using C language,  
   
-# Choose from the following:
+Choose from the following:
         1. Student's Data      (Student's Name is required)
         2. Student's Data      (Student's ID is required)
         3. edit Student's Data (Student's Name is required)
