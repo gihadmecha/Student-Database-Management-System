@@ -1,8 +1,9 @@
 # Student Database Management System
 
-Using C language,  
-  
-Choose from the following:
+used C language to build a system on the console screen to help schools to define, store, retrieve, and edit/update student's information available in the database on an on-demand basis.
+
+Student affairs officer can choose from the following:
+
         1. Student's Data      (Student's Name is required)
         2. Student's Data      (Student's ID is required)
         3. edit Student's Data (Student's Name is required)
@@ -18,4 +19,4 @@ Choose from the following:
         13.get the greatest grade
         14.Exist !!
         
-        
+        ![Screenshot 2023-04-12 054513](https://user-images.githubusercontent.com/19871755/231343919-861da65e-56b2-4a50-b51d-81dcf209632a.png)
