@@ -5,7 +5,7 @@
 #include <conio.h>
 
 
-#define SCHOOL_SIZE 3
+#define SCHOOL_SIZE 10
 
 static u32 schoolIndex = 0;
 static student school[SCHOOL_SIZE] = {0};

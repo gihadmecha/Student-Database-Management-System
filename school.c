@@ -12,6 +12,9 @@ int school_addStudent ()
         student_scan ( school + schoolIndex);
         schoolIndex++;
         
+        school_storeData ();
+        school_initialize ();
+
         return 1;
     }
     
@@ -48,9 +51,15 @@ int school_insertStudent ()
         if (ID < SCHOOL_SIZE)
         {
             school_shiftDown (ID);
+
+            printf ("\n");
             char garbage;
             scanf ("%c", &garbage);
             student_scan (school + ID);
+
+            school_storeData ();
+            school_initialize ();
+
             return 1;
         }
     }
@@ -67,10 +76,11 @@ void school_print ()
 int school_printStudent ()
 {
     u32 ID;
-    printf ("Student's ID: ");
+    printf ("Enter Student's ID: ");
     scanf ("%d", &ID);
     if (ID < schoolIndex)
     {
+        printf ("\n");
         student_Print1 (school[ID]);
         //student_Print2 (school + ID);
 
@@ -83,7 +93,7 @@ int school_printStudent ()
 void school_deleteStudent ()
 {
     u32 ID;
-    printf ("Student's ID: ");
+    printf ("Enter Student's ID: ");
     scanf ("%d", &ID);
     if (ID < schoolIndex)
     {
@@ -92,6 +102,9 @@ void school_deleteStudent ()
             school[index] = school[index + 1];
         }
         schoolIndex--;
+
+        school_storeData ();
+        school_initialize ();
     }
 }
 
@@ -121,6 +134,7 @@ int school_printStudent2 (u32 ID)
 {
     if (ID < schoolIndex)
     {
+        printf ("\n");
         student_Print1 (school[ID]);
         //student_Print2 (school + ID);
 
@@ -133,7 +147,7 @@ int school_printStudent2 (u32 ID)
 index school_searchStudentByName ()
 {
     char name[10];
-    printf ("student's Name: ");
+    printf ("Enter student's Name: ");
     char garbage;
     scanf ("%c", &garbage);
     string_scan (name, 10);
@@ -159,6 +173,7 @@ void school_printSearchedStudent ()
 
     if (index.ack)
     {
+        printf ("\n");
         student_Print1(school[index.index]);
     }
     else 
@@ -186,6 +201,9 @@ void school_sortAlphabetically_selectionSort ()
 
         student_swap (school + studentWithBiggestNameID, school + schoolIndex - 1 - loopNumber);
     }
+
+    school_storeData ();
+    school_initialize ();
 }
 
 void school_sortAccordingGrades_selectionSort ()
@@ -206,6 +224,9 @@ void school_sortAccordingGrades_selectionSort ()
         }
         student_swap (school + studentWithGreatestGradeID, school + schoolIndex - 1 - loopNumber);
     }
+
+    school_storeData ();
+    school_initialize ();
 }
 
 void school_sortAccordingGrades_bubbleSort ()
@@ -228,14 +249,21 @@ void school_sortAccordingGrades_bubbleSort ()
         loopNumber++;
 
     }while (sortFlag == 1);
+
+    school_storeData ();
+    school_initialize ();
 }
 
 int school_editStudentByName ()
 {
     index index = school_searchStudentByName ();
     if (index.ack)
-    {
+    {   
+        printf ("\n");
         student_scan (school + index.index);
+
+        school_storeData ();
+        school_initialize ();
     }
     
     return index.ack;
@@ -244,16 +272,20 @@ int school_editStudentByName ()
 int school_editStudentByID ()
 {
     u32 ID;
-    printf ("Student' ID: ");
+    printf ("Enter Student' ID: ");
     scanf ("%d", &ID);
+    printf ("\n");
     if (ID < SCHOOL_SIZE)
     {
-        if (ID > schoolIndex)
+        if (ID >= schoolIndex)
             schoolIndex = ID + 1;
 
         char garbage;
         scanf ("%c", &garbage);
         student_scan (school + ID);
+
+        school_storeData ();
+        school_initialize ();
 
         return 1;
     }
@@ -261,37 +293,27 @@ int school_editStudentByID ()
     return 0;
 }
 
-COORD GetConsoleCursorPosition(HANDLE hConsoleOutput)
-{
-    CONSOLE_SCREEN_BUFFER_INFO cbsi;
-    if (GetConsoleScreenBufferInfo(hConsoleOutput, &cbsi))
-    {
-        return cbsi.dwCursorPosition;
-    }
-    else
-    {
-        // The function failed. Call GetLastError() for details.
-        COORD invalid = { 0, 0 };
-        return invalid;
-    }
-}
-
 int school_callStudentByID ()
 {
     int x;
     int y;
     u32 ID;
-    printf ("Student's ID: ");
+    printf ("Enter Student's ID: ");
     scanf ("%d", &ID);
 
     if (ID < schoolIndex)
     {
+        printf ("\n");
         string_print2 (school[ID].mobile);
 
         x = c_wherex();
         y = c_wherey();
         for (u32 index = 0; index < 5; index++)
         {
+            c_gotoxy(x, y);
+            printf ("    ");
+            _sleep (500);
+            c_gotoxy(x, y);
             printf (" ");
             _sleep (500);
             printf (".");
@@ -300,10 +322,6 @@ int school_callStudentByID ()
             _sleep (500);
             printf (".");
             _sleep (500);
-            c_gotoxy(x, y);
-            printf ("    ");
-            _sleep (500);
-            c_gotoxy(x, y);
         }
         
         printf("\n");
@@ -321,12 +339,17 @@ int school_callStudentByName ()
 
     if (requiredIndex.ack)
     {
+        printf ("\n");
         string_print2 (school[requiredIndex.index].mobile);
 
         x = c_wherex();
         y = c_wherey();
         for (u32 index = 0; index < 5; index++)
         {
+            c_gotoxy(x, y);
+            printf ("    ");
+            _sleep (500);
+            c_gotoxy(x, y);
             printf (" ");
             _sleep (500);
             printf (".");
@@ -335,10 +358,6 @@ int school_callStudentByName ()
             _sleep (500);
             printf (".");
             _sleep (500);
-            c_gotoxy(x, y);
-            printf ("    ");
-            _sleep (500);
-            c_gotoxy(x, y);
         }
         printf ("\n");
 
@@ -352,7 +371,7 @@ void school_storeData ()
 {
     FILE * fp;
 
-    fp = fopen ("studentDatabase.txt", "w");
+    fp = fopen ("StudentDatabase.txt", "w");
     fprintf(fp, "%d\n", schoolIndex);
     for (u32 index = 0; index < schoolIndex; index++)
     {
@@ -365,7 +384,7 @@ void school_initialize ()
 {
     FILE * fp;
 
-    fp = fopen ("studentDatabase.txt", "r");
+    fp = fopen ("StudentDatabase.txt", "r");
     fscanf(fp, "%d", &schoolIndex);
     for (u32 index = 0; index < schoolIndex; index++)
     {

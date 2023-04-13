@@ -109,11 +109,11 @@ int main ()
             if(maxGrade.maxGradeAck)
             {
                 printf ("the greatest Grade is %d\n", maxGrade.maxGrade);
-                printf ("student of the year: \n");
-                printf ("student's ID: %d\n", maxGrade.maxGradeID);
+                //printf ("student of the year: \n");
+                //printf ("student's ID: %d\n", maxGrade.maxGradeID);
                 //??
-                student_Print1 (school[maxGrade.maxGradeID]);
-                school_printStudent2 (maxGrade.maxGradeID);
+                //student_Print1 (school[maxGrade.maxGradeID]);
+                //school_printStudent2 (maxGrade.maxGradeID);
             }
             else
             {
