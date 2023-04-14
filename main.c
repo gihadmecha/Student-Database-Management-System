@@ -9,7 +9,7 @@ int main ()
     maxGrade maxGrade;
 
     school_initialize ();
-    
+
     while (1)
     {
         printf ("\nChoose from the following:\n");
