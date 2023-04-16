@@ -12,24 +12,71 @@ int main ()
 
     while (1)
     {
+        c_textcolor(YELLOW);
         printf ("\nChoose from the following:\n");
-        printf ("1. Student's Data      (Student's Name is required)\n");
-        printf ("2. Student's Data      (Student's ID is required)\n");
-        printf ("3. edit Student's Data (Student's Name is required)\n");
-        printf ("4. edit Student's Data (Student's ID is required)\n");
-        printf ("5. call Student        (Student's Name is required)\n");
-        printf ("6. call Student        (Student's ID is required)\n");
-        printf ("7. add Student\n");
-        printf ("8. insert Student\n");
-        printf ("9. delete Student\n");
-        printf ("10.the whole Student DataBase\n");
-        printf ("11.sort Students Alphabetically\n");
-        printf ("12.sort Students according grades\n");
-        printf ("13.get the greatest grade\n");
-        printf ("14.Exist !!\n\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("1. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("Student's Data      (Student's Name is required)\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("2. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("Student's Data      (Student's ID is required)\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("3. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("edit Student's Data (Student's Name is required)\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("4. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("edit Student's Data (Student's ID is required)\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("5. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("call Student        (Student's Name is required)\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("6. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("call Student        (Student's ID is required)\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("7. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("add Student\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("8. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("insert Student\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("9. ");
+        c_textcolor(LIGHTGRAY);
+        printf ("delete Student\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("10.");
+        c_textcolor(LIGHTGRAY);
+        printf ("the whole Student DataBase\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("11.");
+        c_textcolor(LIGHTGRAY);
+        printf ("sort Students Alphabetically\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("12.");
+        c_textcolor(LIGHTGRAY);
+        printf ("sort Students according grades\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("13.");
+        c_textcolor(LIGHTGRAY);
+        printf ("get the greatest grade\n");
+        c_textcolor(LIGHTGREEN);
+        printf ("14.");
+        c_textcolor(LIGHTGRAY);
+        printf ("Exist !!\n\n");
 
+        c_textcolor(YELLOW);
         printf ("choice number: ");
+        c_textcolor(WHITE);
+        c_textcolor(LIGHTMAGENTA);
         scanf ("%d", &choice);
+        c_textcolor(WHITE);
         printf ("\n");
         switch(choice)
         {
@@ -108,7 +155,10 @@ int main ()
             maxGrade = school_getMaxGrade();
             if(maxGrade.maxGradeAck)
             {
-                printf ("the greatest Grade is %d\n", maxGrade.maxGrade);
+                c_textcolor(LIGHTGRAY);
+                printf ("the greatest Grade is ");
+                c_textcolor(LIGHTGREEN);
+                printf("%d\n", maxGrade.maxGrade);
                 //printf ("student of the year: \n");
                 //printf ("student's ID: %d\n", maxGrade.maxGradeID);
                 //??
@@ -117,11 +167,13 @@ int main ()
             }
             else
             {
+                c_textcolor(LIGHTRED);
                 printf ("There is no Student of the year !!\n");
             }
             break;
 
             case 14:
+            c_textcolor(WHITE);
             school_storeData ();
             return 0;
             break;

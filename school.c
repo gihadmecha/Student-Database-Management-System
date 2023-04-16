@@ -46,7 +46,9 @@ int school_insertStudent ()
     if ( schoolIndex < SCHOOL_SIZE)
     {
         u32 ID;
+        c_textcolor(YELLOW);
         printf ("Student' ID: ");
+        c_textcolor(LIGHTMAGENTA);
         scanf ("%d", &ID);
         if (ID < SCHOOL_SIZE)
         {
@@ -76,7 +78,9 @@ void school_print ()
 int school_printStudent ()
 {
     u32 ID;
+    c_textcolor(YELLOW);
     printf ("Enter Student's ID: ");
+    c_textcolor(LIGHTMAGENTA);
     scanf ("%d", &ID);
     if (ID < schoolIndex)
     {
@@ -93,7 +97,9 @@ int school_printStudent ()
 void school_deleteStudent ()
 {
     u32 ID;
+    c_textcolor(YELLOW);
     printf ("Enter Student's ID: ");
+    c_textcolor(LIGHTMAGENTA);
     scanf ("%d", &ID);
     if (ID < schoolIndex)
     {
@@ -147,8 +153,10 @@ int school_printStudent2 (u32 ID)
 index school_searchStudentByName ()
 {
     char name[10];
+    c_textcolor(YELLOW);
     printf ("Enter student's Name: ");
     char garbage;
+    c_textcolor(LIGHTMAGENTA);
     scanf ("%c", &garbage);
     string_scan (name, 10);
 
@@ -272,7 +280,9 @@ int school_editStudentByName ()
 int school_editStudentByID ()
 {
     u32 ID;
+    c_textcolor(YELLOW);
     printf ("Enter Student' ID: ");
+    c_textcolor(LIGHTMAGENTA);
     scanf ("%d", &ID);
     printf ("\n");
     if (ID < SCHOOL_SIZE)
@@ -298,12 +308,15 @@ int school_callStudentByID ()
     int x;
     int y;
     u32 ID;
+    c_textcolor(YELLOW);
     printf ("Enter Student's ID: ");
+    c_textcolor(LIGHTMAGENTA);
     scanf ("%d", &ID);
 
     if (ID < schoolIndex)
     {
         printf ("\n");
+        c_textcolor(WHITE);
         string_print2 (school[ID].mobile);
 
         x = c_wherex();
@@ -340,6 +353,7 @@ int school_callStudentByName ()
     if (requiredIndex.ack)
     {
         printf ("\n");
+        c_textcolor(WHITE);
         string_print2 (school[requiredIndex.index].mobile);
 
         x = c_wherex();
@@ -392,3 +406,4 @@ void school_initialize ()
     }
     fclose(fp);
 }
+
