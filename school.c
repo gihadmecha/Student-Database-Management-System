@@ -389,7 +389,7 @@ void school_storeData ()
     fprintf(fp, "%d\n", schoolIndex);
     for (u32 index = 0; index < schoolIndex; index++)
     {
-        fprintf(fp, "%s %s %d %d %s %s %d %s %s %d\n", school[index].name, school[index].mobile, school[index].age, school[index].grade, school[index].father.name, school[index].father.mobile, school[index].father.ID, school[index].mother.name, school[index].father.mobile, school[index].mother.ID);
+        fprintf(fp, "%s %s %d %d %s %s %d %s %s %d\n", school[index].name, school[index].mobile, school[index].age, school[index].grade, school[index].father.name, school[index].father.mobile, school[index].father.ID, school[index].mother.name, school[index].mother.mobile, school[index].mother.ID);
     }
     fclose(fp);
 }
@@ -402,7 +402,7 @@ void school_initialize ()
     fscanf(fp, "%d", &schoolIndex);
     for (u32 index = 0; index < schoolIndex; index++)
     {
-        fscanf(fp, "%s %s %d %d %s %s %d %s %s %d", &school[index].name, &school[index].mobile, &school[index].age, &school[index].grade, &school[index].father.name, &school[index].father.mobile, &school[index].father.ID, &school[index].mother.name, &school[index].father.mobile, &school[index].mother.ID);
+        fscanf(fp, "%s %s %d %d %s %s %d %s %s %d", &school[index].name, &school[index].mobile, &school[index].age, &school[index].grade, &school[index].father.name, &school[index].father.mobile, &school[index].father.ID, &school[index].mother.name, &school[index].mother.mobile, &school[index].mother.ID);
     }
     fclose(fp);
 }
